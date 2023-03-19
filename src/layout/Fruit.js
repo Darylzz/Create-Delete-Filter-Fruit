@@ -1,7 +1,18 @@
 import "./Fruit.css";
-import appleImg from "../asset/Apple.jpeg";
-import orangeImg from "../asset/orange.jpeg";
+import { useEffect, useState } from "react";
+import * as fruitApi from "../api/fruit-api";
 export default function Fruit() {
+  const [allFruit, setAllFruit] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
+
+  useEffect(() => {
+    const fetchAllFruit = async () => {
+      const res = await fruitApi.getAllFruit();
+      setAllFruit(res.data.fruitList);
+    };
+    fetchAllFruit();
+  }, []);
+
   return (
     <div>
       <nav>
@@ -19,28 +30,21 @@ export default function Fruit() {
           <h3>ชื่อผลไม้</h3>
           <hr />
         </div>
-        <div className="productContent">
-          <div className="product1">
-            <div className="productContentName">
-              <p>apple</p>
+        {allFruit?.map(el => (
+          <>
+            <div className="productContent" key={el.id}>
+              <div className="product1">
+                <div className="productContentName">
+                  <p>{el.name}</p>
+                </div>
+                <div className="productContentImg">
+                  <img src={process.env.REACT_APP_URL + el.image} alt="" />
+                </div>
+              </div>
             </div>
-            <div className="productContentImg">
-              <img src={appleImg} alt="" />
-            </div>
-          </div>
-        </div>
-        <hr />
-        <div className="productContent">
-          <div className="product1">
-            <div className="productContentName">
-              <p>orange</p>
-            </div>
-            <div className="productContentImg">
-              <img src={orangeImg} alt="" />
-            </div>
-          </div>
-        </div>
-        <hr />
+            <hr />
+          </>
+        ))}
       </div>
     </div>
   );
