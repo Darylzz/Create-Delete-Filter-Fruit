@@ -23,6 +23,8 @@ export default function Fruit() {
     fruit.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // console.log(filteredFruit);
+
   return (
     <div>
       <nav>
@@ -46,35 +48,33 @@ export default function Fruit() {
           <h3>ชื่อผลไม้</h3>
           <hr />
         </div>
-        {allFruit.length > 0 ? (
-          filteredFruit.map(el => (
-            <>
-              <div className="productContent" key={el.id}>
-                <div className="product1">
-                  <div className="productContentName">
-                    <p>{el.name}</p>
-                  </div>
-                  <div className="productContentImg">
-                    <img src={process.env.REACT_APP_URL + el.image} alt="" />
-                  </div>
-                  <div className="productFruitButton">
-                    <button
-                      onClick={async () => {
-                        await fruitApi.deleteFruit(el.id);
-                        navigate(0);
-                      }}
-                    >
-                      Delete
-                    </button>
+        {allFruit.length > 0
+          ? filteredFruit.map(el => (
+              <>
+                <div className="productContent" key={el.id}>
+                  <div className="product1">
+                    <div className="productContentName">
+                      <p>{el.name}</p>
+                    </div>
+                    <div className="productContentImg">
+                      <img src={process.env.REACT_APP_URL + el.image} alt="" />
+                    </div>
+                    <div className="productFruitButton">
+                      <button
+                        onClick={async () => {
+                          await fruitApi.deleteFruit(el.id);
+                          navigate(0);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <hr />
-            </>
-          ))
-        ) : (
-          <p>Loading...</p>
-        )}
+                <hr />
+              </>
+            ))
+          : ""}
       </div>
     </div>
   );
