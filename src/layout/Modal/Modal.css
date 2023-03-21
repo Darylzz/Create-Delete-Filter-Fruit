@@ -1,0 +1,20 @@
+.ModalContainer {
+  width: 800px;
+  height: 270px;
+  position: fixed;
+  background: #fff;
+  top: 24%;
+  left: 26%;
+  border-radius: 4px;
+  box-shadow: #333 5px 4px 4px;
+}
+.ModalCreate {
+  padding: 1rem;
+}
+.ModalInput {
+  padding: 1rem 0 10px 225px;
+}
+.ModalButton button {
+  margin-left: 110px;
+  margin-top: 20px;
+}

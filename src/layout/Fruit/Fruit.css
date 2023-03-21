@@ -58,3 +58,10 @@ hr {
   width: 150px;
   margin: auto;
 }
+.productFruitButton button {
+  padding: 1rem;
+  border: none;
+  background: red;
+  color: #fff;
+  margin-left: 350px;
+}

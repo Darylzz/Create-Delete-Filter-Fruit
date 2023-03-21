@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Fruit from "../layout/Fruit";
+import Fruit from "../layout/Fruit/Fruit";
 
 const router = createBrowserRouter([
   {
